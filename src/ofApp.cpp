@@ -7,6 +7,8 @@ void ofApp::setup(){
 	cli_.subscribe("load", &editor_, &ImageEditor::loadImage);
 	cli_.subscribe("save", &editor_, &ImageEditor::saveImage);
 	cli_.subscribe("clear", &editor_, &ImageEditor::clear);
+	cli_.subscribe("undo", &editor_, &ImageEditor::undo);
+	cli_.subscribe("redo", &editor_, &ImageEditor::redo);
 	cli_.subscribe("erase", [&]() { editor_.setModeEraser(true); });
 	cli_.subscribe("draw", [&]() { editor_.setModeEraser(false); });
 	cli_.subscribe("plot", [&]() { editor_.setModeBrush(); });
