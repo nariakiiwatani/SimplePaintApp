@@ -45,9 +45,18 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	bool is_cli_blank = cli_.getCurrent().getText().empty();
 	switch(key) {
-		case OF_KEY_LEFT: editor_.undo(); break;
-		case OF_KEY_RIGHT: editor_.redo(); break;
+		case OF_KEY_LEFT: 
+			if(is_cli_blank) {
+				editor_.undo();
+			}
+			break;
+		case OF_KEY_RIGHT:
+			if(is_cli_blank) {
+				editor_.redo();
+			}
+			break;
 	}
 }
 
