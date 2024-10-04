@@ -20,6 +20,10 @@ void ofApp::setup(){
 	cli_.subscribe("bg", [&](float r, float g, float b, float a) {
 		editor_.setBackgroundColor(ofFloatColor{r,g,b,a});
 	}, {0,0,0,1});
+	cli_.subscribe("window", [](int x, int y, int w, int h) {
+		ofSetWindowPosition(x, y);
+		ofSetWindowShape(w, h);
+	});
 	
 }
 //--------------------------------------------------------------
