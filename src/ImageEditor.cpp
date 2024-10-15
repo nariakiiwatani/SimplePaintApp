@@ -175,7 +175,8 @@ void ImageEditor::drawHistory() const
 	ofClear(state_save.bg_color);
 
 	for(int i = valid_start; i < valid_end; ++i) {
-		auto &&c = command[i];
+		auto c = command[i];
+		c.state.bg_color = state_save.bg_color;
 		switch(c.type) {
 			case Command::PLOT:
 				drawPlots(c.plot, c.state);
@@ -184,7 +185,7 @@ void ImageEditor::drawHistory() const
 				c.image.tex.draw(c.image.rect);
 				break;
 			case Command::STATE:
-				state_save = c.state;
+//				state_save = c.state;
 				break;
 			case Command::CLEAR:
 //				ofClear(state_save.bg_color);
